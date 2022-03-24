@@ -9,12 +9,20 @@ GfxMgr::GfxMgr(Engine *engine, int win_width, int win_height) : Mgr(engine)
 
 GfxMgr::~GfxMgr()
 {
+    SDL_DestroyRenderer(m_renderer);
     SDL_FreeSurface(m_window_surface);
     SDL_DestroyWindow(m_window);
 }
 
 void GfxMgr::Init()
 {
+    // Initialize SDL
+    if ((SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_TIMER) == -1))
+    {
+        printf("Could not initialize SDL: %s.\n", SDL_GetError());
+        exit(-1);
+    }
+
     m_window = SDL_CreateWindow("Tower Wars", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_window_width, m_window_height, 0);
     if (!m_window)
     {
@@ -22,21 +30,29 @@ void GfxMgr::Init()
         std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
         return;
     }
+    m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_PRESENTVSYNC);
 
-    m_window_surface = SDL_GetWindowSurface(m_window);
-
-    if (!m_window_surface)
+    if (!m_renderer)
     {
-        std::cout << "Failed to create window\n";
+        std::cout << "Failed to create renderer\n";
         std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
         return;
     }
+
+    // Set default colour to turquise
+    SDL_SetRenderDrawColor(m_renderer, 45, 164, 132, SDL_ALPHA_OPAQUE);
+
+    m_txt = new Text(m_renderer, "Tower Wars");
+    m_txt->Init();
 }
 
 void GfxMgr::Tick(uint32_t dt)
 {
-    SDL_FillRect(m_window_surface, NULL, SDL_MapRGB(m_window_surface->format, 0, 0, 0));
-    SDL_UpdateWindowSurface(m_window);
+    SDL_RenderClear(m_renderer);
+
+    m_txt->Tick(dt);
+
+    SDL_RenderPresent(m_renderer);
 }
 
 void GfxMgr::Stop()
