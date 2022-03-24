@@ -13,7 +13,7 @@ OBJ := $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 CXXFLAGS := -Iinclude -MMD -MP # -I is a preprocessor flag, not a compiler flag
 CFLAGS := -Wall              # some warnings about bad code
 LDFLAGS := -Llib              # -L is a linker flag
-LDLIBS := -lm -lmingw32 -lSDL2main -lSDL2              # Left empty if no libs are needed
+LDLIBS := -lm -lmingw32 -lSDL2main -lSDL2 -lSDL2_ttf             # Left empty if no libs are needed
 
 .PHONY: all clean
 all: $(EXE)

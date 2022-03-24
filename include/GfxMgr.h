@@ -1,7 +1,8 @@
 #pragma once
 
-#include <Mgr.h>
 #include <SDL2/SDL.h>
+#include <Mgr.h>
+#include <Text.h>
 
 class GfxMgr : public Mgr
 {
@@ -18,4 +19,6 @@ private:
     int m_window_height;
     SDL_Window *m_window;
     SDL_Surface *m_window_surface;
+    SDL_Renderer *m_renderer;
+    Text *m_txt;
 };
