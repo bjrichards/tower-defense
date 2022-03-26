@@ -7,9 +7,12 @@
 
 Engine::Engine()
 {
-    m_keep_running = true;
+    this->m_keep_running = true;
+    this->gfx_mgr = 0;
+    this->input_mgr = 0;
+    this->entity_mgr = 0;
 
-    m_fps_current = 0;
+    this->m_fps_current = 0;
 }
 
 Engine::~Engine()
@@ -50,7 +53,7 @@ void Engine::Run()
     // for fps
     uint32_t fps_last_time = SDL_GetTicks();
     uint32_t fps_frames = 0;
-
+    entity_mgr->Create_Screen_Title();
     while (m_keep_running)
     {
         // get dt

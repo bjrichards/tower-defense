@@ -8,7 +8,8 @@
 class Text
 {
 public:
-    Text(SDL_Renderer *renderer, std::string str);
+    Text(SDL_Renderer *renderer, std::string str, int posx, int posy, int font_size);
+    Text(SDL_Renderer *renderer, std::string str, int posx, int posy, int font_size, SDL_Color color);
     ~Text();
 
     void Init();
@@ -19,11 +20,14 @@ public:
 private:
     SDL_Surface *m_surface;
     SDL_Texture *m_texture;
-    SDL_Renderer *m_renderer;
+    SDL_Renderer *m_renderer = 0;
 
     TTF_Font *m_font;
-    SDL_Color color = {255, 255, 255};
+    SDL_Color m_color = {255, 255, 255};
     std::string m_str;
-    int m_texW, m_texH = 0;
+    int m_font_size;
+    int m_posx, m_posy;
+    int m_texW = 0;
+    int m_texH = 0;
     SDL_Rect m_dstrect;
 };
