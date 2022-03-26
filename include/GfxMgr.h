@@ -2,7 +2,6 @@
 
 #include <SDL2/SDL.h>
 #include <Mgr.h>
-#include <Text.h>
 
 class GfxMgr : public Mgr
 {
@@ -14,11 +13,9 @@ public:
     void Tick(uint32_t dt);
     void Stop();
 
-private:
-    int m_window_width;
-    int m_window_height;
+    int m_window_width = 0;
+    int m_window_height = 0;
     SDL_Window *m_window;
     SDL_Surface *m_window_surface;
     SDL_Renderer *m_renderer;
-    Text *m_txt;
 };

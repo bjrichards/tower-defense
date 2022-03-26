@@ -1,4 +1,5 @@
 #include <GfxMgr.h>
+#include <Engine.h>
 #include <iostream>
 
 GfxMgr::GfxMgr(Engine *engine, int win_width, int win_height) : Mgr(engine)
@@ -41,16 +42,16 @@ void GfxMgr::Init()
 
     // Set default colour to turquise
     SDL_SetRenderDrawColor(m_renderer, 45, 164, 132, SDL_ALPHA_OPAQUE);
-
-    m_txt = new Text(m_renderer, "Tower Wars");
-    m_txt->Init();
 }
 
 void GfxMgr::Tick(uint32_t dt)
 {
     SDL_RenderClear(m_renderer);
 
-    m_txt->Tick(dt);
+    for (unsigned int i = 0; i < engine->entity_mgr->m_text.size(); i++)
+    {
+        engine->entity_mgr->m_text[i]->Tick(dt);
+    }
 
     SDL_RenderPresent(m_renderer);
 }
