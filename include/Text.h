@@ -14,8 +14,11 @@ public:
 
     void Init();
     void Tick(uint32_t dt);
+    void Draw();
     void Update_Text(std::string str);
     void Stop();
+
+    SDL_Rect m_dstrect;
 
 private:
     SDL_Surface *m_surface;
@@ -29,5 +32,4 @@ private:
     int m_posx, m_posy;
     int m_texW = 0;
     int m_texH = 0;
-    SDL_Rect m_dstrect;
 };

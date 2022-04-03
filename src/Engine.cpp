@@ -11,34 +11,40 @@ Engine::Engine()
     this->gfx_mgr = 0;
     this->input_mgr = 0;
     this->entity_mgr = 0;
+    this->game_mgr = 0;
 
     this->m_fps_current = 0;
 }
 
 Engine::~Engine()
 {
-    delete (gfx_mgr);
-    delete (input_mgr);
-    delete (entity_mgr);
+    delete (this->gfx_mgr);
+    delete (this->input_mgr);
+    delete (this->entity_mgr);
+    delete (this->game_mgr);
     SDL_Quit();
 }
 
 void Engine::Init()
 {
-    gfx_mgr = new GfxMgr(this, 1920, 1080);
-    input_mgr = new InputMgr(this);
-    entity_mgr = new EntityMgr(this);
+    this->gfx_mgr = new GfxMgr(this, 1920, 1080);
+    this->input_mgr = new InputMgr(this);
+    this->entity_mgr = new EntityMgr(this);
+    this->game_mgr = new GameMgr(this);
 
-    gfx_mgr->Init();
+    this->gfx_mgr->Init();
     std::cout << "Graphics Manager initialized\n";
-    input_mgr->Init();
+    this->input_mgr->Init();
     std::cout << "Input Manager initialized\n";
-    entity_mgr->Init();
+    this->entity_mgr->Init();
     std::cout << "Entity Manager initialized\n";
+    this->game_mgr->Init();
+    std::cout << "Game Manager initialized\n";
 }
 
 void Engine::TickAll(uint32_t dt)
 {
+    game_mgr->Tick(dt);
     input_mgr->Tick(dt);
     entity_mgr->Tick(dt);
     gfx_mgr->Tick(dt);
@@ -53,7 +59,6 @@ void Engine::Run()
     // for fps
     uint32_t fps_last_time = SDL_GetTicks();
     uint32_t fps_frames = 0;
-    entity_mgr->Create_Screen_Title();
     while (m_keep_running)
     {
         // get dt
@@ -78,8 +83,8 @@ void Engine::Run()
 
 void Engine::Cleanup()
 {
-
     gfx_mgr->Stop();
     input_mgr->Stop();
     entity_mgr->Stop();
+    game_mgr->Stop();
 }

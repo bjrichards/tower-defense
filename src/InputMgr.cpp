@@ -22,6 +22,22 @@ void InputMgr::Tick(uint32_t dt)
         case SDL_QUIT:
             engine->m_keep_running = false;
             break;
+        case SDL_MOUSEBUTTONDOWN:
+            if (m_window_event.button.button == SDL_BUTTON_LEFT)
+            {
+                int x, y;
+                Uint32 buttons;
+
+                buttons = SDL_GetMouseState(&x, &y);
+
+                for (unsigned int i = 0; i < this->engine->entity_mgr->m_button.size(); i++)
+                {
+                    if (this->engine->entity_mgr->m_button[i]->Is_Clicked(x, y))
+                    {
+                        this->engine->game_mgr->Button_Clicked(this->engine->entity_mgr->m_button[i]->button_type);
+                    }
+                }
+            }
         }
     }
 }

@@ -46,6 +46,11 @@ void Text::Init()
 
 void Text::Tick(uint32_t dt)
 {
+    // SDL_RenderCopy(m_renderer, m_texture, NULL, &m_dstrect);
+}
+
+void Text::Draw()
+{
     SDL_RenderCopy(m_renderer, m_texture, NULL, &m_dstrect);
 }
 
