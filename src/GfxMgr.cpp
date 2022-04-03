@@ -50,7 +50,11 @@ void GfxMgr::Tick(uint32_t dt)
 
     for (unsigned int i = 0; i < engine->entity_mgr->m_text.size(); i++)
     {
-        engine->entity_mgr->m_text[i]->Tick(dt);
+        engine->entity_mgr->m_text[i]->Draw();
+    }
+    for (unsigned int i = 0; i < engine->entity_mgr->m_button.size(); i++)
+    {
+        engine->entity_mgr->m_button[i]->Draw();
     }
 
     SDL_RenderPresent(m_renderer);

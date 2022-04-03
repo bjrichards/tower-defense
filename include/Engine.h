@@ -3,6 +3,7 @@
 #include <GfxMgr.h>
 #include <InputMgr.h>
 #include <EntityMgr.h>
+#include <GameMgr.h>
 
 class Engine
 {
@@ -22,4 +23,5 @@ public:
     GfxMgr *gfx_mgr;
     InputMgr *input_mgr;
     EntityMgr *entity_mgr;
+    GameMgr *game_mgr;
 };
