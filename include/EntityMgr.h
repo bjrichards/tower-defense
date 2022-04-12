@@ -5,6 +5,7 @@
 #include <Text.h>
 #include <Button.h>
 #include <vector>
+#include <Entity.h>
 
 class EntityMgr : public Mgr
 {
@@ -17,6 +18,8 @@ public:
     void Stop();
 
     Engine *engine;
+
+    std::vector<Entity *> entities;
     std::vector<Text *> m_text;
     std::vector<Button *> m_button;
 };

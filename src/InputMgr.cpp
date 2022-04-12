@@ -1,5 +1,6 @@
 #include <InputMgr.h>
 #include <Engine.h>
+#include <iostream>
 
 InputMgr::InputMgr(Engine *engine) : Mgr(engine)
 {
@@ -26,18 +27,19 @@ void InputMgr::Tick(uint32_t dt)
             if (m_window_event.button.button == SDL_BUTTON_LEFT)
             {
                 int x, y;
-                Uint32 buttons;
 
-                buttons = SDL_GetMouseState(&x, &y);
+                SDL_GetMouseState(&x, &y);
 
                 for (unsigned int i = 0; i < this->engine->entity_mgr->m_button.size(); i++)
                 {
                     if (this->engine->entity_mgr->m_button[i]->Is_Clicked(x, y))
                     {
                         this->engine->game_mgr->Button_Clicked(this->engine->entity_mgr->m_button[i]->button_type);
+                        break;
                     }
                 }
             }
+            break;
         }
     }
 }

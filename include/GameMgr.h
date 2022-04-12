@@ -19,6 +19,7 @@ public:
 
     void Create_Scene_Title();
     void Create_Scene_Play();
+    void Create_Scene_Settings();
 
     Engine *engine;
     SceneType scene_type;

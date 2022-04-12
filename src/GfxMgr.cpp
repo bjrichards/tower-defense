@@ -13,6 +13,7 @@ GfxMgr::~GfxMgr()
     SDL_DestroyRenderer(m_renderer);
     SDL_FreeSurface(m_window_surface);
     SDL_DestroyWindow(m_window);
+    TTF_Quit();
 }
 
 void GfxMgr::Init()
@@ -23,6 +24,7 @@ void GfxMgr::Init()
         printf("Could not initialize SDL: %s.\n", SDL_GetError());
         exit(-1);
     }
+    TTF_Init();
 
     m_window = SDL_CreateWindow("Tower Wars", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_window_width, m_window_height, 0);
     if (!m_window)

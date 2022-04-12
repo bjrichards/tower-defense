@@ -5,6 +5,8 @@
 #include <EntityMgr.h>
 #include <GameMgr.h>
 
+class EntityMgr;
+
 class Engine
 {
 public:

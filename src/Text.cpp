@@ -25,15 +25,14 @@ Text::~Text()
     SDL_DestroyTexture(m_texture);
     SDL_FreeSurface(m_surface);
     TTF_CloseFont(m_font);
-    TTF_Quit();
 }
 
 void Text::Init()
 {
-    TTF_Init();
+
     m_font = TTF_OpenFont("font/Mali-Regular.ttf", 100);
 
-    m_surface = TTF_RenderText_Solid(m_font, m_str.data(), m_color);
+    m_surface = TTF_RenderText_Blended(m_font, m_str.data(), m_color);
     m_texture = SDL_CreateTextureFromSurface(m_renderer, m_surface);
 
     SDL_QueryTexture(m_texture, NULL, NULL, &m_texW, &m_texH);
