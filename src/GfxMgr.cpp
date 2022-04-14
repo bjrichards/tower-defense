@@ -51,6 +51,10 @@ void GfxMgr::Tick(double dt)
     SDL_RenderClear(m_renderer);
     SDL_SetRenderDrawColor(m_renderer, 45, 164, 132, SDL_ALPHA_OPAQUE);
 
+    for (unsigned int i = 0; i < engine->entity_mgr->entities.size(); i++)
+    {
+        engine->entity_mgr->entities[i]->Draw();
+    }
     for (unsigned int i = 0; i < engine->entity_mgr->m_text.size(); i++)
     {
         engine->entity_mgr->m_text[i]->Draw();
@@ -58,10 +62,6 @@ void GfxMgr::Tick(double dt)
     for (unsigned int i = 0; i < engine->entity_mgr->m_button.size(); i++)
     {
         engine->entity_mgr->m_button[i]->Draw();
-    }
-    for (unsigned int i = 0; i < engine->entity_mgr->entities.size(); i++)
-    {
-        engine->entity_mgr->entities[i]->Draw();
     }
 
     SDL_RenderPresent(m_renderer);

@@ -19,6 +19,9 @@ Entity::Entity(Engine *engine, Vector2 pos, int identity)
     this->m_position = pos;
     this->m_velocity = Vector2();
 
+    this->m_height = 220;
+    this->m_width = 220;
+
     this->speed = 0;
     this->fire_rate = 0;
     this->acceleration = 0;
@@ -71,4 +74,39 @@ Vector2 Entity::Get_Position()
 Vector2 Entity::Get_Velocity()
 {
     return m_velocity;
+}
+
+int Entity::Get_Height()
+{
+    return m_height;
+}
+
+int Entity::Get_Width()
+{
+    return m_width;
+}
+
+double Entity::Get_Top()
+{
+    return m_position.y;
+}
+
+double Entity::Get_Bottom()
+{
+    return m_position.y + m_height;
+}
+
+double Entity::Get_Left()
+{
+    return m_position.x;
+}
+
+double Entity::Get_Right()
+{
+    return m_position.x + m_width;
+}
+
+int Entity::Get_Identity()
+{
+    return identity;
 }

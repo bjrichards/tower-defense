@@ -17,6 +17,7 @@ public:
 
     void Button_Clicked(ButtonType bt);
 
+    void Create_Scene_Cube_Drop();
     void Create_Scene_Title();
     void Create_Scene_Play();
     void Create_Scene_Settings();

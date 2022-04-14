@@ -2,7 +2,8 @@
 
 enum SceneType
 {
-    Title_Scene,
+    Cube_Drop_Scene,
     Play_Scene,
-    Settings,
+    Settings_Scene,
+    Title_Scene,
 };

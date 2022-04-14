@@ -25,6 +25,16 @@ public:
     Vector2 Get_Position();
     Vector2 Get_Velocity();
 
+    int Get_Height();
+    int Get_Width();
+
+    double Get_Top();
+    double Get_Bottom();
+    double Get_Left();
+    double Get_Right();
+
+    int Get_Identity();
+
     Engine *engine;
 
     std::string name;
@@ -40,6 +50,9 @@ public:
 private:
     // Static data
     int identity;
+
+    int m_height;
+    int m_width;
 
     // Dynamic data
     Vector2 m_position;
