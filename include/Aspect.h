@@ -10,7 +10,7 @@ public:
     Aspect(Entity *ent);
     virtual ~Aspect();
 
-    virtual void Tick(uint32_t dt);
+    virtual void Tick(double dt);
 
     Entity *entity;
 };

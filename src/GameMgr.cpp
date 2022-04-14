@@ -3,6 +3,7 @@
 #include <Button.h>
 #include <Engine.h>
 #include <ButtonTypes.h>
+#include <Square.h>
 #include <iostream>
 
 GameMgr::GameMgr(Engine *engine) : Mgr(engine)
@@ -20,7 +21,7 @@ void GameMgr::Init()
     Create_Scene_Title();
 }
 
-void GameMgr::Tick(uint32_t dt)
+void GameMgr::Tick(double dt)
 {
     // std::cout << scene_type << "\n";
 }
@@ -96,7 +97,12 @@ void GameMgr::Create_Scene_Play()
 {
     Clear_Current_Scene();
 
-    SDL_Rect rect = {engine->gfx_mgr->m_window_width / 2, engine->gfx_mgr->m_window_height / 2, 0, 0};
+    // Add square for testing
+    Vector2 vec = {engine->gfx_mgr->m_window_height / 2 - 50, engine->gfx_mgr->m_window_height / 2 - 50};
+    Square *square = new Square(engine, vec, 1);
+    engine->entity_mgr->entities.push_back(square);
+
+    SDL_Rect rect = {150, engine->gfx_mgr->m_window_height - 50, 0, 0};
 
     Button *button = new Button(engine, rect, "Back!", ButtonType::Back_Button, engine->gfx_mgr->m_renderer);
     this->engine->entity_mgr->m_button.push_back(button);
@@ -104,6 +110,10 @@ void GameMgr::Create_Scene_Play()
     for (unsigned int i = 0; i < this->engine->entity_mgr->m_button.size(); i++)
     {
         this->engine->entity_mgr->m_button[i]->Init();
+    }
+    for (unsigned int i = 0; i < this->engine->entity_mgr->entities.size(); i++)
+    {
+        this->engine->entity_mgr->entities[i]->Init();
     }
 
     button = NULL;
@@ -151,5 +161,11 @@ void GameMgr::Clear_Current_Scene()
     {
         delete (this->engine->entity_mgr->m_text[i]);
         this->engine->entity_mgr->m_text.erase(this->engine->entity_mgr->m_text.begin() + i);
+    }
+
+    for (int i = this->engine->entity_mgr->entities.size() - 1; i >= 0; --i)
+    {
+        delete (this->engine->entity_mgr->entities[i]);
+        this->engine->entity_mgr->entities.erase(this->engine->entity_mgr->entities.begin() + i);
     }
 }

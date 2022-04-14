@@ -14,7 +14,7 @@ void InputMgr::Init()
 {
 }
 
-void InputMgr::Tick(uint32_t dt)
+void InputMgr::Tick(double dt)
 {
     while (SDL_PollEvent(&m_window_event) > 0)
     {

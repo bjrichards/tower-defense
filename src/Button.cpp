@@ -25,7 +25,7 @@ void Button::Init()
     m_rect.w = m_text->m_dstrect.w;
 }
 
-void Button::Tick(uint32_t dt)
+void Button::Tick(double dt)
 {
 }
 

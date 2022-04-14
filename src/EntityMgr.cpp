@@ -35,8 +35,12 @@ void EntityMgr::Init()
 {
 }
 
-void EntityMgr::Tick(uint32_t dt)
+void EntityMgr::Tick(double dt)
 {
+    for (unsigned int i = 0; i < entities.size(); i++)
+    {
+        entities[i]->Tick(dt);
+    }
 }
 
 void EntityMgr::Stop()

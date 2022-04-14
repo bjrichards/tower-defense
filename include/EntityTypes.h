@@ -3,4 +3,5 @@
 enum EntityTypes
 {
     None,
+    Square_Entity,
 };

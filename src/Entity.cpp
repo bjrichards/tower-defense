@@ -1,6 +1,8 @@
 #include <Entity.h>
 #include <EntityTypes.h>
 
+#include <iostream>
+
 std::string IntToString(int x)
 {
     char tmp[10000];
@@ -14,8 +16,8 @@ Entity::Entity(Engine *engine, Vector2 pos, int identity)
 
     this->identity = identity;
 
-    this->position = pos;
-    this->velocity = Vector2();
+    this->m_position = pos;
+    this->m_velocity = Vector2();
 
     this->speed = 0;
     this->fire_rate = 0;
@@ -28,20 +30,45 @@ Entity::Entity(Engine *engine, Vector2 pos, int identity)
 
 Entity::~Entity()
 {
-    for (int i = this->aspects.size() - 1; i >= 0; --i)
-    {
-        delete (this->aspects[i]);
-        this->aspects.erase(this->aspects.begin() + i);
-    }
+    // for (int i = this->aspects.size() - 1; i >= 0; --i)
+    // {
+    //     delete (this->aspects[i]);
+    //     this->aspects.erase(this->aspects.begin() + i);
+    // }
 
-    SDL_DestroyTexture(texture);
-    SDL_FreeSurface(surface);
+    // SDL_DestroyTexture(texture);
+    // SDL_FreeSurface(surface);
 }
 
-void Entity::Tick(uint32_t dt)
+void Entity::Init()
 {
-    for (unsigned int i = 0; i < aspects.size(); i++)
-    {
-        aspects[i]->Tick(dt);
-    }
+}
+
+void Entity::Tick(double dt)
+{
+    std::cout << "Hi";
+}
+
+void Entity::Draw()
+{
+}
+
+void Entity::Set_Position(double x, double y)
+{
+    m_position = {x, y};
+}
+
+void Entity::Set_Velocity(double x, double y)
+{
+    m_velocity = {x, y};
+}
+
+Vector2 Entity::Get_Position()
+{
+    return m_position;
+}
+
+Vector2 Entity::Get_Velocity()
+{
+    return m_velocity;
 }

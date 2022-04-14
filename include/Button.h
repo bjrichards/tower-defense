@@ -13,7 +13,7 @@ public:
     ~Button();
 
     void Init();
-    void Tick(uint32_t dt);
+    void Tick(double dt);
     void Draw();
     void Stop();
     bool Is_Clicked(int mouse_x, int mouse_y);

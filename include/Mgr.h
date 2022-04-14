@@ -12,6 +12,6 @@ public:
     Engine *engine;
 
     virtual void Init();
-    virtual void Tick(uint32_t dt);
+    virtual void Tick(double dt);
     virtual void Stop();
 };

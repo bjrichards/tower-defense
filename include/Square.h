@@ -1,27 +1,29 @@
 #pragma once
 
-#include <SDL2/SDL.h>
-#include <Vector2.h>
-#include <vector>
-#include <Aspect.h>
-#include <EntityTypes.h>
+#include <Entity.h>
 #include <Engine.h>
+#include <Vector2.h>
+// #include <Aspect.h>
 
-class Entity
+class Aspect;
+
+// #include <Physics.h>
+
+class Square : public Entity
 {
 public:
-    Entity(Engine *engine, Vector2 pos, int identity);
-    virtual ~Entity();
+    Square(Engine *engine, Vector2 pos, int identity);
+    ~Square();
 
-    virtual void Init();
-    virtual void Tick(double dt);
-    virtual void Draw();
+    void Init();
+    void Tick(double dt);
+    void Draw();
 
-    virtual void Set_Position(double x, double y);
-    virtual void Set_Velocity(double x, double y);
+    void Set_Position(double x, double y);
+    void Set_Velocity(double x, double y);
 
-    virtual Vector2 Get_Position();
-    virtual Vector2 Get_Velocity();
+    Vector2 Get_Position();
+    Vector2 Get_Velocity();
 
     Engine *engine;
 

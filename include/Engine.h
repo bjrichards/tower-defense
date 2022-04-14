@@ -15,7 +15,7 @@ public:
 
     void Init();
     void Run();
-    void TickAll(uint32_t dt);
+    void TickAll(double dt);
     void Cleanup();
 
     bool m_keep_running;

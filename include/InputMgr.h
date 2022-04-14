@@ -10,7 +10,7 @@ public:
     ~InputMgr();
 
     void Init();
-    void Tick(uint32_t dt);
+    void Tick(double dt);
     void Stop();
 
 private:

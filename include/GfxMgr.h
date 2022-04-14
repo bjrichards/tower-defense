@@ -10,7 +10,7 @@ public:
     ~GfxMgr();
 
     void Init();
-    void Tick(uint32_t dt);
+    void Tick(double dt);
     void Stop();
 
     int m_window_width = 0;

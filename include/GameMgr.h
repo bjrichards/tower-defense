@@ -12,7 +12,7 @@ public:
     ~GameMgr();
 
     void Init();
-    void Tick(uint32_t dt);
+    void Tick(double dt);
     void Stop();
 
     void Button_Clicked(ButtonType bt);

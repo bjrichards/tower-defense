@@ -43,7 +43,7 @@ void Text::Init()
                  m_texH};
 }
 
-void Text::Tick(uint32_t dt)
+void Text::Tick(double dt)
 {
     // SDL_RenderCopy(m_renderer, m_texture, NULL, &m_dstrect);
 }

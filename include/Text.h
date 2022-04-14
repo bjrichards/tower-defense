@@ -13,7 +13,7 @@ public:
     ~Text();
 
     void Init();
-    void Tick(uint32_t dt);
+    void Tick(double dt);
     void Draw();
     void Update_Text(std::string str);
     void Stop();

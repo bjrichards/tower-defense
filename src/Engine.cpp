@@ -42,7 +42,7 @@ void Engine::Init()
     std::cout << "Game Manager initialized\n";
 }
 
-void Engine::TickAll(uint32_t dt)
+void Engine::TickAll(double dt)
 {
     game_mgr->Tick(dt);
     input_mgr->Tick(dt);
@@ -62,9 +62,9 @@ void Engine::Run()
     while (m_keep_running)
     {
         // get dt
-        uint32_t dt = 0.0;
+        double dt = 0.0;
         tick_time = SDL_GetTicks();
-        dt = tick_time - last_tick_time;
+        dt = (double)(tick_time - last_tick_time) / (double)100;
         last_tick_time = tick_time;
 
         // tick all

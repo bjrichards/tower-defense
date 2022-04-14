@@ -1,4 +1,7 @@
 #include <Aspect.h>
+#include <Entity.h>
+
+#include <iostream>
 
 Aspect::Aspect(Entity *ent)
 {
@@ -9,6 +12,6 @@ Aspect::~Aspect()
 {
 }
 
-void Aspect::Tick(uint32_t dt)
+void Aspect::Tick(double dt)
 {
 }

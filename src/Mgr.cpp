@@ -18,6 +18,6 @@ void Mgr::Stop()
 {
 }
 
-void Mgr::Tick(uint32_t dt)
+void Mgr::Tick(double dt)
 {
 }
