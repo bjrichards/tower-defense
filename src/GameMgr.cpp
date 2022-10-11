@@ -5,6 +5,7 @@
 #include <ButtonTypes.h>
 #include <Square.h>
 #include <iostream>
+#include <Utilities.h>
 
 GameMgr::GameMgr(Engine *engine) : Mgr(engine)
 {
@@ -58,6 +59,11 @@ void GameMgr::Button_Clicked(ButtonType bt)
         scene_type = SceneType::Settings_Scene;
         Create_Scene_Settings();
         break;
+    case ButtonType::Level_1_Button:
+        std::cout << "Level 1 button pressed!\n";
+        scene_type = SceneType::Level_Scene;
+        Create_Scene_Level(1);
+        break;
     }
 }
 void GameMgr::Create_Scene_Title()
@@ -106,9 +112,13 @@ void GameMgr::Create_Scene_Play()
 {
     Clear_Current_Scene();
 
-    SDL_Rect rect = {150, engine->gfx_mgr->m_window_height - 50, 0, 0};
+    SDL_Rect rect = {150, 150, 0, 0};
 
-    Button *button = new Button(engine, rect, "Back!", ButtonType::Back_Button, engine->gfx_mgr->m_renderer);
+    Button *button = new Button(engine, rect, "[1]", ButtonType::Level_1_Button, engine->gfx_mgr->m_renderer);
+    this->engine->entity_mgr->m_button.push_back(button);
+
+    rect = {150, engine->gfx_mgr->m_window_height - 50, 0, 0};
+    button = new Button(engine, rect, "Back!", ButtonType::Back_Button, engine->gfx_mgr->m_renderer);
     this->engine->entity_mgr->m_button.push_back(button);
 
     for (unsigned int i = 0; i < this->engine->entity_mgr->m_button.size(); i++)
@@ -134,7 +144,7 @@ void GameMgr::Create_Scene_Cube_Drop()
     {
         for (int j = 0; j <= engine->gfx_mgr->m_window_height / 100; j++, counter++)
         {
-            Vector2 vec = {i * 100, 0 - (i * 40) - (j * 200)};
+            Vector2 vec = {(double)(i * 100), (double)(0 - (i * 40) - (j * 200))};
             Square *square = new Square(engine, vec, counter);
             engine->entity_mgr->entities.push_back(square);
         }
@@ -164,6 +174,34 @@ void GameMgr::Create_Scene_Settings()
 
     Text *text = new Text(engine->gfx_mgr->m_renderer, "Settings", engine->gfx_mgr->m_window_width / 2, engine->gfx_mgr->m_window_height / 2 - 300, 60);
     // Title of game
+    this->engine->entity_mgr->m_text.push_back(text);
+
+    SDL_Rect rect = {150, engine->gfx_mgr->m_window_height - 50, 0, 0};
+
+    Button *button = new Button(engine, rect, "Back!", ButtonType::Back_Button, engine->gfx_mgr->m_renderer);
+    this->engine->entity_mgr->m_button.push_back(button);
+
+    for (unsigned int i = 0; i < this->engine->entity_mgr->m_text.size(); i++)
+    {
+        this->engine->entity_mgr->m_text[i]->Init();
+    }
+
+    for (unsigned int i = 0; i < this->engine->entity_mgr->m_button.size(); i++)
+    {
+        this->engine->entity_mgr->m_button[i]->Init();
+    }
+
+    button = NULL;
+    delete (button);
+    text = NULL;
+    delete (text);
+}
+
+void GameMgr::Create_Scene_Level(int level_num)
+{
+    Clear_Current_Scene();
+
+    Text *text = new Text(engine->gfx_mgr->m_renderer, "Level " + utilities::IntToString(level_num), engine->gfx_mgr->m_window_width / 2, 50, 60);
     this->engine->entity_mgr->m_text.push_back(text);
 
     SDL_Rect rect = {150, engine->gfx_mgr->m_window_height - 50, 0, 0};

@@ -21,6 +21,7 @@ public:
     void Create_Scene_Title();
     void Create_Scene_Play();
     void Create_Scene_Settings();
+    void Create_Scene_Level(int level_num);
 
     Engine *engine;
     SceneType scene_type;

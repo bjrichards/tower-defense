@@ -6,4 +6,5 @@ enum SceneType
     Play_Scene,
     Settings_Scene,
     Title_Scene,
+    Level_Scene,
 };

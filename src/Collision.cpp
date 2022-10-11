@@ -23,7 +23,7 @@ void Collision::Tick(double dt)
 
     // Check if collides into another entity
     Entity *other;
-    for (int i = 0; i < entity->engine->entity_mgr->entities.size(); i++)
+    for (unsigned int i = 0; i < entity->engine->entity_mgr->entities.size(); i++)
     {
         other = entity->engine->entity_mgr->entities[i];
 
