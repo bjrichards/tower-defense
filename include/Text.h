@@ -16,7 +16,7 @@ public:
     void Tick(double dt);
     void Draw();
     void Update_Text(std::string str);
-    void Update_Font_size(int font_size);
+    void Update_Font_Size(int font_size);
     void Stop();
 
     SDL_Rect m_dstrect;

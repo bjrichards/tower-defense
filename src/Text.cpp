@@ -30,7 +30,7 @@ Text::~Text()
 void Text::Init()
 {
 
-    m_font = TTF_OpenFont("font/Mali-Regular.ttf", 100);
+    m_font = TTF_OpenFont("font/Mali-Regular.ttf", m_font_size);
 
     m_surface = TTF_RenderText_Blended(m_font, m_str.data(), m_color);
     m_texture = SDL_CreateTextureFromSurface(m_renderer, m_surface);
@@ -65,6 +65,10 @@ void Text::Update_Text(std::string str)
                  m_posy - m_texH / 2,
                  m_texW,
                  m_texH};
+}
+
+void Text::Update_Font_Size(int font_size)
+{
 }
 
 void Text::Stop()

@@ -9,7 +9,7 @@ class Engine;
 class Button
 {
 public:
-    Button(Engine *engine, SDL_Rect rect, std::string str, ButtonType bt, SDL_Renderer *renderer);
+    Button(Engine *engine, SDL_Rect rect, std::string str, int font_size, ButtonType bt, SDL_Renderer *renderer);
     ~Button();
 
     void Init();

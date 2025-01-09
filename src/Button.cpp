@@ -1,6 +1,6 @@
 #include <Button.h>
 
-Button::Button(Engine *engine, SDL_Rect rect, std::string str, ButtonType bt, SDL_Renderer *renderer)
+Button::Button(Engine *engine, SDL_Rect rect, std::string str, int font_size, ButtonType bt, SDL_Renderer *renderer)
 {
     this->engine = engine;
     this->m_rect = rect;
@@ -8,7 +8,7 @@ Button::Button(Engine *engine, SDL_Rect rect, std::string str, ButtonType bt, SD
 
     // Text stuff
     SDL_Color color = {200, 200, 255};
-    m_text = new Text(renderer, str, m_rect.x, m_rect.y, 60, color);
+    m_text = new Text(renderer, str, m_rect.x, m_rect.y, font_size, color);
 }
 
 Button::~Button()
@@ -40,7 +40,7 @@ void Button::Stop()
 
 void Button::Set_Font_Size(int font_size)
 {
-    m_text->Update_Font_size(font_size);
+    m_text->Update_Font_Size(font_size);
 }
 
 bool Button::Is_Clicked(int mouse_x, int mouse_y)
