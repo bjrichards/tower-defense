@@ -38,6 +38,11 @@ void Button::Stop()
 {
 }
 
+void Button::Set_Font_Size(int font_size)
+{
+    m_text->Update_Font_size(font_size);
+}
+
 bool Button::Is_Clicked(int mouse_x, int mouse_y)
 {
     // Check if button clicked

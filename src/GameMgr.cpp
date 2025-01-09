@@ -40,8 +40,13 @@ void GameMgr::Button_Clicked(ButtonType bt)
         scene_type = SceneType::Title_Scene;
         Create_Scene_Title();
         break;
+    case ButtonType::Main_Menu_Button:
+        std::cout << "Title button pressed!\n";
+        scene_type = SceneType::Title_Scene;
+        Create_Scene_Title();
+        break;
     case ButtonType::Cube_Drop_Button:
-        std::cout << "Back button pressed!\n";
+        std::cout << "Cube drop button pressed!\n";
         scene_type = SceneType::Cube_Drop_Scene;
         Create_Scene_Cube_Drop();
         break;
@@ -206,7 +211,7 @@ void GameMgr::Create_Scene_Level(int level_num)
 
     SDL_Rect rect = {150, engine->gfx_mgr->m_window_height - 50, 0, 0};
 
-    Button *button = new Button(engine, rect, "Back!", ButtonType::Back_Button, engine->gfx_mgr->m_renderer);
+    Button *button = new Button(engine, rect, "Menu", ButtonType::Main_Menu_Button, engine->gfx_mgr->m_renderer);
     this->engine->entity_mgr->m_button.push_back(button);
 
     for (unsigned int i = 0; i < this->engine->entity_mgr->m_text.size(); i++)

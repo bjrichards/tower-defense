@@ -7,6 +7,7 @@ enum ButtonType
     Exit_Button,
     Play_Button,
     Settings_Button,
+    Main_Menu_Button,
 
     Level_1_Button,
 };

@@ -16,6 +16,7 @@ public:
     void Tick(double dt);
     void Draw();
     void Stop();
+    void Set_Font_Size(int font_size);
     bool Is_Clicked(int mouse_x, int mouse_y);
 
     ButtonType button_type;
